@@ -12,7 +12,6 @@ def consolidate_cart(cart)
 end
 
 def apply_coupons(cart, coupons)
-  binding.pry
  cart_with_coupons = {}
   consolidate_cart({cart}).each{|item, hash|
     modified_hash = {}
