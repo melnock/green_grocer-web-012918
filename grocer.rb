@@ -13,7 +13,8 @@ end
 
 def apply_coupons(cart, coupons)
  cart_with_coupons = {}
-  consolidate_cart.each{|item, hash|
+  consolidate_cart(cart)
+  cart.each{|item, hash|
     modified_hash = {}
     hash.each{|k,v|
       modified_hash[k] = v
