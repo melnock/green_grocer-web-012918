@@ -20,20 +20,26 @@ def apply_coupons(cart, coupons)
     hash.each{|k,v|
       modified_hash[k] = v
     }
+    modified_hash
     coupons.each {|hash_coup|
-      if item != hash_coup[:item] || hash[:count] < hash_coup[:num]
-        cart_with_coupons[item] = hash 
-      else
+      if item == hash_coup[:item] || hash[:count] >= hash_coup[:num]
         cart_with_coupons["#{item} W/COUPON"] = modified_hash
-      if hash_coup[:num] = modified_hash[:count]
-        modified_hash[:count] = 1
-        modified_hash[:price] = hash_coup[:cost]
-        cart.delete(item)
-      else hash_coup[:num] < modified_hash[:count]
-        modified_hash[:count] = (modified_hash[:count] - hash_coup[:num])
-        modified_hash[:price] = hash_coup[:cost]
+        if hash_coup[:num] = modified_hash[:count]
+          modified_hash[:count] = 1
+          modified_hash[:price] = hash_coup[:cost]
+          cart.delete(item)
+        else hash_coup[:num] < modified_hash[:count]
+          modified_hash[:count] = (modified_hash[:count] - hash_coup[:num])
+          modified_hash[:price] = hash_coup[:cost]
+          hash[:count] = hash[:count] - hash_coup[:num]
+          if hash[:count] > 0
+          cart_with_coupons[item] = hash
+          end
+          cart.delete(item)
+        end
+      else
+        cart_with_coupons[item] = hash 
       end
-    end
     }
   }
   cart_with_coupons
