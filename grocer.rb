@@ -1,6 +1,5 @@
-require "pry"
 def consolidate_cart(cart)
-  consolidated = {}
+  consolidated={}
   grocery = []
   cart.each{|hash|
       hash.each {|item, hash2|
@@ -8,7 +7,7 @@ def consolidate_cart(cart)
         grocery << item
         hash2[:count] = cart.count(hash)
         consolidated[item] = hash2
-        }
+      }
   }
   consolidated
 end
