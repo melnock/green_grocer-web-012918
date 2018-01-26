@@ -14,7 +14,6 @@ end
 def apply_coupons(cart, coupons)
  cart_with_coupons = {}
   consolidate_cart(cart).each{|item, hash|
-  binding.pry
     modified_hash = {}
     hash.each{|k,v|
       modified_hash[k] = v
@@ -31,6 +30,7 @@ def apply_coupons(cart, coupons)
             cart_with_coupons.delete(item)
             cart.delete(item)
           end
+          binding.pry
         else hash_coup[:num] < modified_hash[:count]
           modified_hash[:count] = (modified_hash[:count] - hash_coup[:num])
           modified_hash[:price] = hash_coup[:cost]
