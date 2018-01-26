@@ -25,13 +25,17 @@ def apply_coupons(cart, coupons)
         if hash_coup[:num] == modified_hash[:count]
           modified_hash[:count] = 1
           modified_hash[:price] = hash_coup[:cost]
-          cart.delete(item)
+          hash[:count] = hash[:count] - hash_coup[:num]
+          if hash[:count] == 0
+            cart_with_coupons.delete(item)
+            cart.delete(item)
+          end
         else hash_coup[:num] < modified_hash[:count]
           modified_hash[:count] = (modified_hash[:count] - hash_coup[:num])
           modified_hash[:price] = hash_coup[:cost]
           hash[:count] = (hash[:count]-hash_coup[:num])
           if hash[:count] > 0
-          cart_with_coupons[item] = hash
+            cart_with_coupons[item] = hash
           end
           cart.delete(item)
         end
