@@ -1,14 +1,12 @@
 require "pry"
 def consolidate_cart(cart)
   consolidated={}
-  grocery = []
   cart.each{|hash|
-      hash.each {|item, hash2|
-        next if consolidated.include?(item)
-        grocery << item
-        hash2[:count] = cart.count(hash)
-        consolidated[item] = hash2
-      }
+    hash.each {|item, hash2|
+      next if consolidated.include?(item)
+      hash2[:count] = cart.count(hash)
+      consolidated[item] = hash2
+    }
   }
   consolidated
 end
