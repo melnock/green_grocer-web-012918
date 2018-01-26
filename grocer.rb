@@ -42,7 +42,6 @@ def apply_coupons(cart, coupons)
       else
         cart_with_coupons[item] = hash 
       end
-      binding.pry
     }
   }
   cart_with_coupons
