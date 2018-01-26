@@ -4,11 +4,10 @@ def consolidate_cart(cart)
   grocery = []
   cart.each{|hash|
       hash.each {|item, hash2|
-        next if grocery.include?(item)
+        next if consolidated.include?(item)
         grocery << item
         hash2[:count] = cart.count(hash)
         consolidated[item] = hash2
-        binding.pry
       }
   }
   consolidated
