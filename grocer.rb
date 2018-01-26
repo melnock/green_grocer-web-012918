@@ -1,3 +1,4 @@
+require "pry"
 def consolidate_cart(cart)
   consolidated={}
   grocery = []
@@ -7,6 +8,7 @@ def consolidate_cart(cart)
         grocery << item
         hash2[:count] = cart.count(hash)
         consolidated[item] = hash2
+        binding.pry
       }
   }
   consolidated
